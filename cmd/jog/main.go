@@ -16,11 +16,9 @@ func init() {
 }
 
 func main() {
-	handler := func(ctx *fasthttp.RequestCtx) {}
-
-	handler = func(ctx *fasthttp.RequestCtx) {
+	handler := func(ctx *fasthttp.RequestCtx) {
 		switch asStr(ctx.Path()) {
-		case "/hi":
+		case "/api/v1/hi":
 			handlers.Hi(ctx)
 		default:
 			ctx.Error(fasthttp.StatusMessage(fasthttp.StatusNotFound), fasthttp.StatusNotFound)
