@@ -17,7 +17,7 @@
     "url": "https://github.com/sergystepanov/jo-go/issues"
   },
   "homepage": "https://github.com/sergystepanov/jo-go#readme",
-  "dependencies": {
+  "devDependencies": {
     "esbuild": "^0.9.0"
   }
 }
