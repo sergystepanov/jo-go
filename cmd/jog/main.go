@@ -5,6 +5,7 @@ import (
 	"unsafe"
 
 	"github.com/sergystepanov/jo-go/pkg/handlers"
+	"github.com/sergystepanov/jo-go/pkg/store"
 	"github.com/valyala/fasthttp"
 )
 
@@ -30,6 +31,17 @@ func main() {
 		Handler:                       handler,
 		DisableHeaderNamesNormalizing: true,
 	}
+
+	// store init
+	persistence := store.NewStore()
+	defer func() {
+		err := persistence.Db.Close()
+		if err != nil {
+			panic(err)
+		}
+	}()
+
+	//persistence.Db.
 
 	if err := server.ListenAndServe(bindHost); err != nil {
 		panic(err)
