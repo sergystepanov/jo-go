@@ -20,3 +20,6 @@
 # Frontend directories
 web/node_modules/
 web/app.js
+
+# Store
+jog.store

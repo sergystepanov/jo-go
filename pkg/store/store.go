@@ -8,7 +8,7 @@ type Store struct {
 }
 
 func NewStore() *Store {
-	db, err := sql.Open("sqlite3", "file:locked.sqlite?cache=shared")
+	db, err := sql.Open("sqlite3", "file:jog.store?cache=shared")
 	if err != nil {
 		panic(err)
 	}

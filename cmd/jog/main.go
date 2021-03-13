@@ -17,10 +17,21 @@ func init() {
 }
 
 func main() {
+	// store init
+	persistence := store.NewStore()
+	defer func() {
+		err := persistence.Db.Close()
+		if err != nil {
+			panic(err)
+		}
+	}()
+
 	handler := func(ctx *fasthttp.RequestCtx) {
 		switch asStr(ctx.Path()) {
 		case "/api/v1/hi":
 			handlers.Hi(ctx)
+		case "/api/v1/data":
+			handlers.Data(ctx, persistence.Db)
 		default:
 			ctx.Error(fasthttp.StatusMessage(fasthttp.StatusNotFound), fasthttp.StatusNotFound)
 		}
@@ -31,17 +42,6 @@ func main() {
 		Handler:                       handler,
 		DisableHeaderNamesNormalizing: true,
 	}
-
-	// store init
-	persistence := store.NewStore()
-	defer func() {
-		err := persistence.Db.Close()
-		if err != nil {
-			panic(err)
-		}
-	}()
-
-	//persistence.Db.
 
 	if err := server.ListenAndServe(bindHost); err != nil {
 		panic(err)
