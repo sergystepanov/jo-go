@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"net/http"
 	"unsafe"
 
 	"github.com/sergystepanov/jo-go/pkg/handlers"
@@ -17,11 +18,9 @@ func init() {
 }
 
 func main() {
-	// store init
 	persistence := store.NewStore()
 	defer func() {
-		err := persistence.Db.Close()
-		if err != nil {
+		if err := persistence.Db.Close(); err != nil {
 			panic(err)
 		}
 	}()
@@ -43,7 +42,7 @@ func main() {
 		DisableHeaderNamesNormalizing: true,
 	}
 
-	if err := server.ListenAndServe(bindHost); err != nil {
+	if err := server.ListenAndServe(bindHost); err != nil && err != http.ErrServerClosed {
 		panic(err)
 	}
 }
