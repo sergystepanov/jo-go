@@ -13,3 +13,13 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+
+# IDEs
+.idea/
+
+# Frontend directories
+web/node_modules/
+web/app.js
+
+# Store
+jog.store
