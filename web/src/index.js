@@ -1,16 +1,23 @@
-import Ajax from "./request/ajax";
 import {done} from "./screen/home";
-import {apiHi} from "./api/apiV1";
+import {Hi} from "./api/apiV1";
+import {Table} from "./ui/table";
 
-(function () {
+(async function () {
     const root = document.getElementById('root');
 
-    Ajax(apiHi).then(response => {
-        response.text()
-            .then(res => {
-                root.innerText = res
-            })
+    const message = document.createElement('div');
+    root.appendChild(message);
+    message.innerText = await Hi();
+
+    const data = document.createElement('div');
+    root.appendChild(data);
+    Table(data, {
+        data: {
+            h: ["a", "b", "c"],
+            r: [["1", "2", "3"], ["1", "2", "3"]]
+        }
     });
+
 
     done();
 })();

@@ -11,13 +11,13 @@
     "type": "git",
     "url": "git+https://github.com/sergystepanov/jo-go.git"
   },
-  "author": "Sergy Stepanov <sergystepanov@gmail.com>",
+  "author": "Sergey Stepanov <sergystepanov@gmail.com>",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/sergystepanov/jo-go/issues"
   },
   "homepage": "https://github.com/sergystepanov/jo-go#readme",
   "devDependencies": {
-    "esbuild": "^0.9.0"
+    "esbuild": "^0.11.0"
   }
 }

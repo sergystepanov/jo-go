@@ -12,8 +12,5 @@ func NewStore() *Store {
 	if err != nil {
 		panic(err)
 	}
-
-	return &Store{
-		Db: db,
-	}
+	return &Store{Db: db}
 }
